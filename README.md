@@ -8,7 +8,8 @@ TBA
 
 ```shell
 $ cd path/to/your/project
-$ wget https://github.com/????/invoke.pex .
+$ wget https://github.com/rkawajiri/pyinvoke-pex/raw/master/invoke.pex
+$ chmod +x invoke.pex
 $ edit tasks.py
 ```
 
