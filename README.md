@@ -20,7 +20,7 @@ from invoke import task
 
 @task
 def pex(ctx):
-    ctx.run("pex -r requirements.txt -c invoke -o invoke.pex")
+    ctx.run('pex --python-shebang="#!/usr/bin/env python" -r requirements.txt -c invoke -o invoke.pex')
 ```
 
 If you have not created `requirements.txt`, create the file and write required packages. Then rebuild invoke.pex file.
@@ -37,6 +37,18 @@ $ ./invoke.pex your_task
 
 When you add packages, add the packages to requirements.txt and rebuild.
 
+
+# Trouble Shootings
+
+## pex.resolver.Untranslateable: *** is not translateable by ChainedTranslator(WheelTranslator, EggTransator, SourceTranslator)
+
+Try add an option `--no-use-wheel`.
+
+```python
+@task
+def pex(ctx):
+    ctx.run('pex --python-shebang="#!/usr/bin/env python" --no-use-wheel -r requirements.txt -c invoke -o invoke.pex')
+```
 
 # LICENSE
 TBA
